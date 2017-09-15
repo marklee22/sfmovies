@@ -7,18 +7,30 @@ describe('movie controller', () => {
 
   describe('create', () => {
 
-    it('creates a movie', () => {
-      const payload = { title: 'WALL-E' };
-
+    const assertMovieCreated = function (payload, expTitle) {
       return Controller.create(payload)
       .then((movie) => {
-        expect(movie.get('title')).to.eql(payload.title);
+        expect(movie.get('name')).to.eql(expTitle);
 
         return new Movie({ id: movie.id }).fetch();
       })
       .then((movie) => {
-        expect(movie.get('title')).to.eql(payload.title);
+        expect(movie.get('name')).to.eql(expTitle);
       });
+    };
+
+    it('creates a movie with name', () => {
+      const expTitle = 'WALL-E';
+      const payload = { name: expTitle };
+
+      return assertMovieCreated(payload, expTitle);
+    });
+
+    it('creates a movie with title', () => {
+      const expTitle = 'WALL-E';
+      const payload = { title: expTitle };
+
+      return assertMovieCreated(payload, expTitle);
     });
 
   });
