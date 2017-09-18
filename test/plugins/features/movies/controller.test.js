@@ -11,14 +11,14 @@ describe('movie controller', () => {
       const payload = { title: 'WALL-E' };
 
       return Controller.create(payload)
-        .then((movie) => {
-          expect(movie.get('title')).to.eql(payload.title);
+      .then((movie) => {
+        expect(movie.get('title')).to.eql(payload.title);
 
-          return new Movie({ id: movie.id }).fetch();
-        })
-        .then((movie) => {
-          expect(movie.get('title')).to.eql(payload.title);
-        });
+        return new Movie({ id: movie.id }).fetch();
+      })
+      .then((movie) => {
+        expect(movie.get('title')).to.eql(payload.title);
+      });
     });
 
   });
