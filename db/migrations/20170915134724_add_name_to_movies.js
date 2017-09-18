@@ -1,5 +1,7 @@
 'use strict';
 
+exports.config = { transaction: false };
+
 exports.up = function (Knex, Promise) {
   return Knex.schema.table('movies', (table) => {
     table.text('name');
