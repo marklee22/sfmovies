@@ -5,6 +5,7 @@ const Joi = require('joi');
 const MovieValidator = require('../../lib/validators/movies/create');
 
 describe('movie validator', () => {
+
   describe('name', () => {
 
     it('is an invalid key', () => {
