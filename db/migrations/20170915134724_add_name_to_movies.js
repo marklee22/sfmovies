@@ -1,7 +1,5 @@
 'use strict';
 
-exports.config = { transaction: false };
-
 exports.up = function (Knex, Promise) {
   return Knex.schema.table('movies', (table) => {
     table.text('name');
@@ -19,3 +17,5 @@ exports.down = function (Knex, Promise) {
     return Knex.raw('ALTER TABLE movies ALTER COLUMN title SET NOT NULL');
   });
 };
+
+exports.config = { transaction: false };
