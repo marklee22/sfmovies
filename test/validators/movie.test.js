@@ -6,6 +6,18 @@ const MovieValidator = require('../../lib/validators/movies/create');
 
 describe('movie validator', () => {
 
+  describe('name', () => {
+
+    it('is an invalid key', () => {
+      const payload = { title: 'test', name: 'test' };
+      const result = Joi.validate(payload, MovieValidator);
+
+      expect(result.error.details[0].path[0]).to.eql('name');
+      expect(result.error.details[0].type).to.eql('any.unknown');
+    });
+
+  });
+
   describe('title', () => {
 
     it('is required', () => {
