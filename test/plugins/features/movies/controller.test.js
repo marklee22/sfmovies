@@ -7,7 +7,7 @@ describe('movie controller', () => {
 
   describe('create', () => {
 
-    const assertMovieCreated = function (payload, expectedName) {
+    const assertMovieCreated = (payload, expectedName) => {
       return Controller.create(payload)
       .then((movie) => {
         expect(movie.get('name')).to.eql(expectedName);
