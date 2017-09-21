@@ -5,7 +5,8 @@ exports.up = function (Knex, Promise) {
     table.dropColumn('title');
   })
   .then(() => {
-    return Knex.raw('ALTER TABLE movies ADD CONSTRAINT movies_name_not_null CHECK (name IS NOT NULL) NOT VALID');
+    return Knex.raw('ALTER TABLE movies ADD CONSTRAINT movies_name_not_null CHECK (name IS NOT NULL) NOT VALID')
+    .then(() => Knex.raw('ALTER TABLE movies VALIDATE CONSTRAINT movies_name_not_null'));
   });
 };
 
